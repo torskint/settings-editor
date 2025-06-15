@@ -11,7 +11,7 @@
                     <span>{{ $field['label'] }}</span>
 
                     @if( !empty($field['required']) )
-                        <span class="badge badge-danger">requis</span>
+                        <span class="ml-1 badge bg-danger">requis</span>
                     @endif
                 </label>
                 <input 
