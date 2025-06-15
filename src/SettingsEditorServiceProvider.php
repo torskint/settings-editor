@@ -3,6 +3,7 @@
 namespace SettingsEditor;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Router;
 
 class SettingsEditorServiceProvider extends ServiceProvider
 {
@@ -10,7 +11,7 @@ class SettingsEditorServiceProvider extends ServiceProvider
      * Démarre le package (après l'enregistrement).
      * Charge les routes, vues, helpers et rend les ressources publiables.
      */
-    public function boot()
+    public function boot(Router $router)
     {
         // Charge le helper pour injecter les paramètres dynamiquement
         require_once __DIR__ . '/Helpers/LoadSettings.php';
@@ -21,10 +22,10 @@ class SettingsEditorServiceProvider extends ServiceProvider
         // Charge les vues avec le préfixe "settings-editor::"
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'settings-editor');
 
-        app('router')->aliasMiddleware('torskint.settings.editor.auth', \SettingsEditor\Http\Middleware\SettingsEditorAuth::class);
+        $router->aliasMiddleware('torskint.settings.editor.auth', \SettingsEditor\Http\Middleware\SettingsEditorAuth::class);
 
         // Registre automatique du middleware
-        app('router')->pushMiddlewareToGroup('web', \SettingsEditor\Http\Middleware\InjectGoogleTagManager::class);
+        $router->pushMiddlewareToGroup('web', \SettingsEditor\Http\Middleware\InjectGoogleTagManager::class);
 
         // Permet de publier le fichier de configuration
         $this->publishes([
