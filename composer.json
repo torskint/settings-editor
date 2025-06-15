@@ -21,10 +21,10 @@
       ]
     }
   },
-  
+
   "scripts": {
     "post-autoload-dump": [
-      "@php artisan vendor:publish --provider=SettingsEditor\\SettingsEditorServiceProvider --tag=settings-editor --force"
+      "@php artisan vendor:publish --tag=settings-editor --ansi --force"
     ]
   },
 
