@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-12 m-auto py-5">
 
-        <form method="POST" autocomplete="nope" action="{{ route('torskint.settings_editor.post') }}" class="mt-3 p-4">
+        <form method="POST" autocomplete="nope" action="{{ route('torskint.settings_editor.post') }}" class="p-4">
             @csrf
             <h2 class="mb-4">Paramètres du site</h2>
 
@@ -11,7 +11,7 @@
 
             @foreach(config('torskint-settings-editor.fields') as $key => $field)
                 <div class="mb-3">
-                    <label for="{{ $key }}" class="form-label">
+                    <label for="{{ $key }}" class="form-label fw-bold">
                         <span>{{ $field['label'] }}</span>
 
                         @if( !empty($field['required']) )
