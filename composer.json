@@ -24,9 +24,11 @@
 
   "scripts": {
     "post-install-cmd": [
+      "echo '🎯 Script post-install lancé'",
       "@php artisan vendor:publish --tag=settings-editor --ansi --force"
     ],
     "post-update-cmd": [
+      "echo '🎯 Script post-update lancé'",
       "@php artisan vendor:publish --tag=settings-editor --ansi --force"
     ]
   },
