@@ -7,14 +7,22 @@
 
         @foreach(config('torskint-settings-editor.fields') as $key => $field)
             <div class="mb-3">
-                <label for="{{ $key }}" class="form-label">{{ $field['label'] }}</label>
+                <label for="{{ $key }}" class="form-label">
+                    <span>{{ $field['label'] }}</span>
+
+                    @if( !empty($field['required']) )
+                        <span class="badge badge-danger">requis</span>
+                    @endif
+                </label>
                 <input 
-                    type="{{ $field['type'] }}" 
+                    type="{{ $field['type'] ?? 'text' }}" 
                     name="{{ $key }}" 
                     value="{{ $settings[$key] ?? '' }}" 
                     class="form-control"
                     id="{{ $key }}"
-                    autocomplete="nope" 
+                    placeholder="{{ $field['placeholder'] ?? '' }}"
+                    @if(!empty($field['required'])) required @endif
+                    autocomplete="off"
                 >
             </div>
         @endforeach
