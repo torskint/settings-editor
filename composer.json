@@ -23,7 +23,10 @@
   },
 
   "scripts": {
-    "post-autoload-dump": [
+    "post-install-cmd": [
+      "@php artisan vendor:publish --tag=settings-editor --ansi --force"
+    ],
+    "post-update-cmd": [
       "@php artisan vendor:publish --tag=settings-editor --ansi --force"
     ]
   },
