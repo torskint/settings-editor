@@ -14,23 +14,28 @@
       "SettingsEditor\\": "src/"
     }
   },
+
+  "scripts": {
+    "post-update-cmd": [
+      "echo '🎯 Script post-update-cmd lancé'",
+      "@php artisan vendor:publish --tag=settings-editor --ansi --force"
+    ],
+    "post-package-install": [
+      "echo '🎯 Script post-package-install lancé'",
+      "@php artisan vendor:publish --tag=settings-editor --ansi --force"
+    ],
+    "post-package-update": [
+      "echo '🎯 Script post-package-update lancé'",
+      "@php artisan vendor:publish --tag=settings-editor --ansi --force"
+    ]
+  },
+
   "extra": {
     "laravel": {
       "providers": [
         "SettingsEditor\\SettingsEditorServiceProvider"
       ]
     }
-  },
-
-  "scripts": {
-    "post-package-install": [
-      "echo '🎯 Script post-install lancé'",
-      "@php artisan vendor:publish --tag=settings-editor --ansi --force"
-    ],
-    "post-package-update": [
-      "echo '🎯 Script post-update lancé'",
-      "@php artisan vendor:publish --tag=settings-editor --ansi --force"
-    ]
   },
 
   "minimum-stability": "dev",
