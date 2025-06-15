@@ -4,10 +4,11 @@ namespace SettingsEditor\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class InjectGoogleTagManager
 {
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         $response = $next($request);
 

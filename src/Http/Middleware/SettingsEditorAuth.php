@@ -4,6 +4,7 @@ namespace SettingsEditor\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class SettingsEditorAuth
 {

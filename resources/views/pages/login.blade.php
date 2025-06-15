@@ -9,10 +9,10 @@
             
             <div class="vertical-input-group">
                 <div class="input-group">
-                    <input type="email" autocomplete="nope" name="email" class="form-control" id="emailAddress" required placeholder="Adresse Email">
+                    <input type="email" autocomplete="nope" name="email" class="form-control" id="emailAddress" placeholder="Adresse Email">
                 </div>
                 <div class="input-group">
-                    <input type="password" autocomplete="nope" name="password" class="form-control" id="loginPassword" required placeholder="Mot de passe">
+                    <input type="password" autocomplete="nope" name="password" class="form-control" id="loginPassword" placeholder="Mot de passe">
                 </div>
             </div>
             <div class="d-grid my-4">
