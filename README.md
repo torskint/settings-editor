@@ -49,10 +49,6 @@ Accédez à l'interface web d’édition à l’adresse :
 
 Les données modifiées sont automatiquement enregistrées dans un fichier JSON (`storage/app/torskint-settings-editor.json` par défaut).
 
-```
-
-Souhaite-tu ajouter une section pour expliquer comment [personnaliser les champs affichés](f) ou intégrer les données dans une [vue Blade existante](f) ?
-```
 
 ## 📌 Constantes disponibles
 
