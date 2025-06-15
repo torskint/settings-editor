@@ -3,6 +3,8 @@
 @section('content')
     <div class="col-12 m-auto py-5">
 
+        <x-torskint-settings-editor-alert />
+
         <form method="POST" autocomplete="nope" action="{{ route('torskint.settings_editor.post') }}" class="mt-3 p-4 bg-white shadow-sm rounded border">
             @csrf
             <h4 class="mb-4">Paramètres du site</h4>

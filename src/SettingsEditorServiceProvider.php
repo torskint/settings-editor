@@ -19,6 +19,10 @@ class SettingsEditorServiceProvider extends ServiceProvider
         // Charge les routes du module
         $this->loadRoutesFrom(__DIR__ . '/routes.php');
 
+        $this->loadViewComponentsAs('torskint-settings-editor', [
+            \SettingsEditor\View\Components\Alert::class,
+        ]);
+
         // Charge les vues avec le préfixe "settings-editor::"
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'settings-editor');
 

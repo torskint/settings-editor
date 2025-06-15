@@ -53,7 +53,7 @@ class SettingsController extends Controller
             return redirect()->route('torskint.settings_editor');
         }
 
-        return back()->withErrors(['login_error' => 'Email ou mot de passe invalide.']);
+        return back()->withErrors(['danger' => 'Email ou mot de passe invalide.']);
     }
 
 
@@ -69,7 +69,7 @@ class SettingsController extends Controller
             Settings::set($key, $value);
         }
 
-        return redirect()->back()->with('success', 'Paramètres mis à jour.');
+        return back()->withErrors('success', 'Paramètres mis à jour.');
     }
 
 }
