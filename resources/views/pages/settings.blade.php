@@ -1,7 +1,7 @@
 @extends('settings-editor::layouts.app')
 
 @section('content')
-    <form method="POST" autocomplete="nope" action="{{ route('admin.settings.post') }}" class="mt-3 p-4 bg-white shadow-sm rounded border">
+    <form method="POST" autocomplete="nope" action="{{ route('torskint.settings_editor.post') }}" class="mt-3 p-4 bg-white shadow-sm rounded border">
         @csrf
         <h4 class="mb-4">Paramètres du site</h4>
 
