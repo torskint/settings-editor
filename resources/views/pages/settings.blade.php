@@ -1,7 +1,7 @@
 @extends('settings-editor::layouts.app')
 
 @section('content')
-    <div class="col-12 m-auto py-5">
+    <div class="col-12 m-auto py-3">
 
         <form method="POST" autocomplete="nope" action="{{ route('torskint.settings_editor.post') }}">
             @csrf
