@@ -21,6 +21,13 @@
       ]
     }
   },
+  
+  "scripts": {
+    "post-autoload-dump": [
+      "@php artisan vendor:publish --provider=SettingsEditor\\SettingsEditorServiceProvider --tag=settings-editor --force"
+    ]
+  },
+
   "minimum-stability": "dev",
   "prefer-stable": true
 }
