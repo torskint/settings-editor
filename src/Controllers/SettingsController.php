@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Session;
 class SettingsController extends Controller
 {
 
-    const $CREDENTIALS_SYSTEM_FILE = 'app/torskint-settings-editor-credentials.json';
+    const CREDENTIALS_SYSTEM_FILE = 'app/torskint-settings-editor-credentials.json';
 
     public function login()
     {
         $isFirstSetup = false;
 
-        $filePath = storage_path( self::$CREDENTIALS_SYSTEM_FILE );
+        $filePath = storage_path( self::CREDENTIALS_SYSTEM_FILE );
         if (File::exists($filePath)) {
             $data = json_decode(File::get($filePath), true);
 
@@ -41,7 +41,7 @@ class SettingsController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        $filePath = storage_path( self::$CREDENTIALS_SYSTEM_FILE );
+        $filePath = storage_path( self::CREDENTIALS_SYSTEM_FILE );
 
         // Si aucun mot de passe n’a encore été défini (setup initial)
         if (!File::exists($filePath)) {
