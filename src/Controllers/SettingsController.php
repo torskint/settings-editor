@@ -34,6 +34,8 @@ class SettingsController extends Controller
         $mainContent = File::exists($mainPath) ? File::get($mainPath) : '';
         $moduleContent = File::exists($modulePath) ? File::get($modulePath) : '';
 
+        dd( $mainContent, $modulePath, $moduleContent );
+
         $merged = trim($mainContent . "\n\n" . $moduleContent);
 
         return Response::make($merged, 200, [
