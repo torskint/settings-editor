@@ -18,7 +18,7 @@ class SettingsController extends Controller
 
     public function login()
     {
-        $isFirstSetup = false;
+        $isFirstSetup = true;
 
         $filePath = storage_path( self::CREDENTIALS_SYSTEM_FILE );
         if (File::exists($filePath)) {
