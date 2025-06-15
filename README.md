@@ -21,5 +21,5 @@ composer require torskint/settings-editor
 ### 2. Publier le fichier de configuration
 
 ```bash
-php artisan vendor:publish --provider="SettingsEditor\SettingsEditorServiceProvider" --tag="settings-editor"
+php artisan vendor:publish --tag="settings-editor" --ansi --force
 ```
