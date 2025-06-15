@@ -23,11 +23,11 @@
   },
 
   "scripts": {
-    "post-package-update": [
+    "post-package-install": [
       "echo '🎯 Script post-install lancé'",
       "@php artisan vendor:publish --tag=settings-editor --ansi --force"
     ],
-    "post-package-install": [
+    "post-package-update": [
       "echo '🎯 Script post-update lancé'",
       "@php artisan vendor:publish --tag=settings-editor --ansi --force"
     ]
