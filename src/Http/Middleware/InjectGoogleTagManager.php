@@ -48,8 +48,8 @@ class InjectGoogleTagManager
         HTML;
 
         // Injection sûre dans <head> et <body>
-        $html = preg_replace('/<head([^>]*)>/i', '<head$1>' . $gtmHead, $html, 1);
-        $html = preg_replace('/<body([^>]*)>/i', '<body$1>' . $gtmBody, $html, 1);
+        $html = preg_replace('/<head([^>]*)>/i', '<head$1>' . "\n" . $gtmHead, $html, 1);
+        $html = preg_replace('/<body([^>]*)>/i', '<body$1>' . "\n" . $gtmBody, $html, 1);
 
         $response->setContent($html);
 
