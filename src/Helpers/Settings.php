@@ -5,6 +5,7 @@ namespace SettingsEditor\Helpers;
 class Settings
 {
     protected static $path = 'app/torskint-settings-editor.json';
+    protected static $config_key = 'torskint-settings-editor.fields';
 
     public static function get($key, $default = null)
     {
@@ -19,6 +20,20 @@ class Settings
         return json_decode(file_get_contents($path), true);
     }
 
+    public static function init()
+    {
+        $path = storage_path(self::$path);
+        if ( !file_exists($path) ) {
+
+            $settings = [];
+            foreach (config(self::$config_key) as $key => $field) {
+                $settings[$key] = null;
+            }
+            file_put_contents($path, json_encode($settings, JSON_PRETTY_PRINT));
+
+        }
+    }
+
     public static function set($key, $value)
     {
         $settings = self::all();
@@ -29,12 +44,11 @@ class Settings
     public static function load()
     {
         $settings = self::all();
-        foreach (array_keys(config('torskint-settings-editor.fields')) as $key) {
+        foreach (array_keys(config(self::$config_key)) as $key) {
             $constant = strtoupper($key);
-            $value = $settings[$key] ?? null;
 
             if ( ! defined($constant) ) {
-                define($constant, $value);
+                define($constant, $settings[$key]);
             }
         }
     }
