@@ -8,9 +8,56 @@ use SettingsEditor\Helpers\Settings;
 
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class SettingsController extends Controller
 {
+
+    public function login()
+    {
+        return view('settings-editor::pages.login');
+    }
+
+
+    public function loginPost(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+        ]);
+
+        $filePath = storage_path('app/torskint-settings-editor-credentials.json');
+
+        // Si aucun mot de passe n’a encore été défini (setup initial)
+        if (!File::exists($filePath)) {
+            $credentials = [
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ];
+
+            File::put($filePath, json_encode($credentials));
+
+            Session::put('module_authenticated', true);
+            return redirect()->route('torskint.settings_editor');
+        }
+
+        // Lecture des credentials
+        $data = json_decode(File::get($filePath), true);
+
+        if (
+            $request->email === ($data['email'] ?? null) &&
+            Hash::check($request->password, $data['password'] ?? '')
+        ) {
+            Session::put('module_authenticated', true);
+            return redirect()->route('torskint.settings_editor');
+        }
+
+        return back()->withErrors(['login_error' => 'Email ou mot de passe invalide.']);
+    }
+
+
+
     public function edit()
     {
         return view('settings-editor::pages.settings', ['settings' => Settings::all()]);
@@ -25,21 +72,4 @@ class SettingsController extends Controller
         return redirect()->back()->with('success', 'Paramètres mis à jour.');
     }
 
-
-    public function robots_txt()
-    {
-        $mainPath = public_path('robots.txt');
-        $modulePath = public_path('vendor/settings-editor/robots.txt');
-
-        $mainContent = File::exists($mainPath) ? File::get($mainPath) : '';
-        $moduleContent = File::exists($modulePath) ? File::get($modulePath) : '';
-
-        dd( $mainContent, $modulePath, $moduleContent );
-
-        $merged = trim($mainContent . "\n\n" . $moduleContent);
-
-        return Response::make($merged, 200, [
-            'Content-Type' => 'text/plain',
-        ]);
-    }
 }

@@ -21,6 +21,8 @@ class SettingsEditorServiceProvider extends ServiceProvider
         // Charge les vues avec le préfixe "settings-editor::"
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'settings-editor');
 
+        app('router')->aliasMiddleware('torskint.settings.editor.auth', \SettingsEditor\Http\Middleware\SettingsEditorAuth::class);
+
         // Registre automatique du middleware
         app('router')->pushMiddlewareToGroup('web', \SettingsEditor\Http\Middleware\InjectGoogleTagManager::class);
 

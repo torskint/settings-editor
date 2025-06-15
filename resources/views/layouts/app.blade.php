@@ -1,46 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+    <link href="{{ asset('vendor/settings-editor/assets/images/favicon.png') }}" rel="icon" />
     <title>Éditeur de paramètres</title>
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="{{ asset('vendor/settings-editor/assets/css/bootstrap.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('vendor/settings-editor/assets/css/custom.css') }}">
+    <!-- Web Fonts
+    ========================= -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i' type='text/css'>
+
+    <!-- Stylesheet
+    ========================= -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/settings-editor/assets/css/bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/settings-editor/assets/css/font-awesome.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/settings-editor/assets/css/stylesheet.css') }}" />
 </head>
 <body>
+    <div id="main-wrapper" class="oxyy-login-register min-vh-100 d-flex flex-column bg-body-secondary">
+        <div class="container my-auto">
+            <div class="row g-0">
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('torskint.settings_editor') }}">Éditeur de paramètres</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Contenu principal -->
-    <main class="container py-4">
-        <div class="row">
-            
-            <div class="col-12">
                 @yield('content')
+
             </div>
-
         </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-light text-center py-3 mt-auto border-top">
-        <div class="container">
-            <small>&copy; {{ date('Y') }}. Tous droits réservés.</small>
+        <div class="container-fluid bg-white py-2">
+            <p class="text-center text-2 text-muted mb-0">&copy; 2025. Tous droits réservés.</p>
         </div>
-    </footer>
+    </div> 
 
-    <!-- Bootstrap JS + Popper -->
-    <script src="{{ asset('vendor/settings-editor/assets/js/bootstrap.js') }}"></script>
+    <!-- Script --> 
+    <script src="{{ asset('vendor/settings-editor/assets/js/jquery.min.js') }}"></script> 
+    <script src="{{ asset('vendor/settings-editor/assets/js/bootstrap.js') }}"></script> 
 </body>
 </html>
