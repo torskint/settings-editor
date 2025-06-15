@@ -1,0 +1,26 @@
+{
+  "name": "torskint/settings-editor",
+  "description": "Module Laravel autonome permettant d’éditer dynamiquement le nom, email, téléphone, WhatsApp et adresse du site sans base de données",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Aristo DAKAYAO",
+      "email": "da.aristo.y@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SettingsEditor\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "SettingsEditor\\SettingsEditorServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
