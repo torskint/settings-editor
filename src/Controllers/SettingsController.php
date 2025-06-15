@@ -69,7 +69,7 @@ class SettingsController extends Controller
             Settings::set($key, $value);
         }
 
-        return back()->withErrors('success', 'Paramètres mis à jour.');
+        return back()->withErrors(['success' => 'Paramètres mis à jour.']);
     }
 
 }
