@@ -4,9 +4,8 @@ namespace SettingsEditor\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Response;
-use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
-class InjectGoogleTagManager extends Middleware
+class InjectGoogleTagManager
 {
     public function handle($request, Closure $next)
     {
