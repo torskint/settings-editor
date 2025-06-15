@@ -3,11 +3,11 @@
 @section('content')
     <div class="col-12 m-auto py-5">
 
-        <x-torskint-settings-editor-alert />
-
-        <form method="POST" autocomplete="nope" action="{{ route('torskint.settings_editor.post') }}" class="mt-3 p-4 bg-white shadow-sm rounded border">
+        <form method="POST" autocomplete="nope" action="{{ route('torskint.settings_editor.post') }}" class="mt-3 p-4">
             @csrf
-            <h4 class="mb-4">Paramètres du site</h4>
+            <h2 class="mb-4">Paramètres du site</h2>
+
+            <x-torskint-settings-editor-alert />
 
             @foreach(config('torskint-settings-editor.fields') as $key => $field)
                 <div class="mb-3">
@@ -31,7 +31,7 @@
                 </div>
             @endforeach
 
-            <div class="d-grid my-4">
+            <div class="my-4">
                 <button class="btn btn-primary shadow-none" type="submit">Mettre à jour</button>
             </div>
         </form>
