@@ -15,6 +15,15 @@
     }
   },
 
+  "scripts": {
+    "post-install-cmd": [
+      "@php vendor/torskint/settings-editor/message.php"
+    ],
+    "post-update-cmd": [
+      "@php vendor/torskint/settings-editor/message.php"
+    ]
+  },
+
   "extra": {
     "laravel": {
       "providers": [
