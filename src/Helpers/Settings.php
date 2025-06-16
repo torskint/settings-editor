@@ -77,11 +77,6 @@ class Settings
             return $matches[1] . '// ' . ltrim($matches[0]);
         }, $fileContent, 1);
 
-        // $pattern = '/define\(\s*[\'"]' . preg_quote($name, '/') . '[\'"]\s*,\s*.*?\);/';
-        // $fileContent = preg_replace_callback($pattern, function ($matches) {
-        //     return '// ' . $matches[0]; // commente la ligne
-        // }, $fileContent, 1); // 1 = une seule fois
-
         // Évite d’écraser si aucune modification
         if ($newContent !== $fileContent) {
             file_put_contents($constantsFile, $newContent);
