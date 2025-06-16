@@ -4,27 +4,33 @@ namespace SettingsEditor\Helpers;
 
 class Settings
 {
-    protected static $path              = 'app/torskint-settings-editor.json';
-    protected static $config_key        = 'torskint-settings-editor.fields';
-    protected static $constant_file     = 'app/constants.php';
+    protected static $path          = null;
+    protected static $config_key    = 'torskint-settings-editor.fields';
 
+    protected static function getStoragePath(): string
+    {
+        if (is_null(self::$path)) {
+            self::$path = config('torskint-settings-editor.storage_file');
+        }
+        return storage_path(self::$path);
+    }
 
-    public static function get($key, $default = null)
+    public static function get(string $key, mixed $default = null)
     {
         $settings = self::all();
         return $settings[$key] ?? $default;
     }
 
-    public static function all()
+    public static function all(): array
     {
-        $path = storage_path(self::$path);
+        $path = self::getStoragePath();
         if (!file_exists($path)) return [];
-        return json_decode(file_get_contents($path), true);
+        return json_decode(file_get_contents($path), true) ?? [];
     }
 
-    public static function init()
+    public static function init(): void
     {
-        $path = storage_path(self::$path);
+        $path = self::getStoragePath();
         if ( !file_exists($path) ) {
 
             $settings = [];
@@ -35,14 +41,14 @@ class Settings
         }
     }
 
-    public static function set($key, $value)
+    public static function set(string $key, $value): void
     {
         $settings = self::all();
         $settings[$key] = $value;
-        file_put_contents(storage_path(self::$path), json_encode($settings, JSON_PRETTY_PRINT));
+        file_put_contents(self::getStoragePath(), json_encode($settings, JSON_PRETTY_PRINT));
     }
 
-    public static function load()
+    public static function load(): void
     {
         $settings = self::all();
         foreach (array_keys(config(self::$config_key)) as $key) {
@@ -56,14 +62,14 @@ class Settings
         }
     }
 
-    private static function tse_safe_define($name)
+    private static function tse_safe_define(string $name): bool
     {
         // Ne pas agir si la constante n'est pas encore définie
         if (!defined($name)) {
             return true;
         }
 
-        $constantsFile = base_path(self::$constant_file);
+        $constantsFile = base_path( config('torskint-settings-editor.constant_file') );
         if ( !file_exists($constantsFile) ) {
             return false;
         }

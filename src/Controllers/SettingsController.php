@@ -13,14 +13,21 @@ use Illuminate\Support\Facades\Session;
 
 class SettingsController extends Controller
 {
+    protected static $path = null;
 
-    const CREDENTIALS_SYSTEM_FILE = 'app/torskint-settings-editor-credentials.json';
+    private static function getCredentialsPath(): string
+    {
+        if (is_null(self::$path)) {
+            self::$path = config('torskint-settings-editor.credentials_file');
+        }
+        return storage_path(self::$path);
+    }
 
     public function login()
     {
-        $isFirstSetup = true;
+        $isFirstSetup   = true;
+        $filePath       = self::getCredentialsPath();
 
-        $filePath = storage_path( self::CREDENTIALS_SYSTEM_FILE );
         if (File::exists($filePath)) {
             $data = json_decode(File::get($filePath), true);
 
@@ -40,8 +47,7 @@ class SettingsController extends Controller
             'email' => 'required|email',
             'password' => 'required|string|min:6',
         ]);
-
-        $filePath = storage_path( self::CREDENTIALS_SYSTEM_FILE );
+        $filePath = self::getCredentialsPath();
 
         // Si aucun mot de passe n’a encore été défini (setup initial)
         if (!File::exists($filePath)) {

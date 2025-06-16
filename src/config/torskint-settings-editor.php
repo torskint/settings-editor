@@ -1,6 +1,52 @@
 <?php
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Chemin vers le fichier de constantes
+    |--------------------------------------------------------------------------
+    |
+    | Ce fichier contiendra les constantes PHP que le module pourra lire,
+    | redéfinir ou commenter si nécessaire. Assurez-vous qu’il existe
+    | et qu’il est accessible en écriture si le module doit le modifier.
+    |
+    */
+    'constant_file' => 'app/constants.php',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Chemin vers le fichier JSON de stockage des paramètres
+    |--------------------------------------------------------------------------
+    |
+    | Ce fichier contient les valeurs sauvegardées des paramètres configurables.
+    | Il est utilisé à la lecture/écriture pour charger ou modifier la configuration.
+    |
+    */
+    'storage_file' => 'app/settings-editor-5f4e3d92.json',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fichier des informations sensibles (identifiants API, etc.)
+    |--------------------------------------------------------------------------
+    |
+    | Ce fichier séparé permet de stocker des données sensibles à part,
+    | comme des clés d'API, secrets, tokens, etc.
+    | À exclure du dépôt Git ou à chiffrer si nécessaire.
+    |
+    */
+    'credentials_file' => 'app/settings-credentials-2cb8aef1.json',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Champs éditables via l’éditeur de paramètres
+    |--------------------------------------------------------------------------
+    |
+    | Définissez ici les champs disponibles dans le panneau de configuration.
+    | Chaque champ doit contenir : label, type, placeholder et s’il est requis.
+    | Ces valeurs peuvent être utilisées pour générer dynamiquement un formulaire.
+    |
+    */
     'fields' => [
         'google_tag_manager_id' => [
             'label' => 'Google Tag Manager ID',
