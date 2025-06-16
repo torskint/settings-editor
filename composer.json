@@ -6,22 +6,14 @@
   "authors": [
     {
       "name": "Aristo DAKAYAO",
-      "email": "da.aristo.y@gmail.com"
+      "email": "da.aristo.y@gmail.com",
+      "role": "Developer"
     }
   ],
   "autoload": {
     "psr-4": {
       "SettingsEditor\\": "src/"
     }
-  },
-
-  "scripts": {
-    "post-install-cmd": [
-      "@php vendor/torskint/settings-editor/message.php"
-    ],
-    "post-update-cmd": [
-      "@php vendor/torskint/settings-editor/message.php"
-    ]
   },
 
   "extra": {
