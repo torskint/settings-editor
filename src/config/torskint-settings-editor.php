@@ -48,12 +48,12 @@ return [
     |
     */
     'fields' => [
-        'default_site_language' => [
-            'label' => 'La langue par défaut du site',
-            'type' => 'text',
-            'placeholder' => 'fr,de,it,...',
-            'required' => true,
-        ],
+        // 'default_site_language' => [
+        //     'label' => 'La langue par défaut du site',
+        //     'type' => 'text',
+        //     'placeholder' => 'fr,de,it,...',
+        //     'required' => true,
+        // ],
         'google_tag_manager_id' => [
             'label' => 'Google Tag Manager ID',
             'type' => 'text',
