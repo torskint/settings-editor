@@ -1,6 +1,6 @@
 <?php
 
-namespace Torskint\SettingsEditor\Http\Requests;
+namespace SettingsEditor\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use SettingsEditor\Helpers\Fields;

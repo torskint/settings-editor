@@ -87,7 +87,7 @@ class SettingsController extends Controller
         ]);
     }
 
-    public function update(\Torskint\SettingsEditor\Http\Requests\SettingsEditorRequest $request)
+    public function update(\SettingsEditor\Http\Requests\SettingsEditorRequest $request)
     {
         foreach ($request->validated() as $key => $value) {
             Settings::set($key, $value);
