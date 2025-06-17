@@ -82,7 +82,8 @@ class SettingsController extends Controller
     public function edit()
     {
         return view('settings-editor::pages.settings', [
-            'settings' => Fields::all()
+            'fields' => Fields::all(),
+            'settings' => Settings::all(),
         ]);
     }
 

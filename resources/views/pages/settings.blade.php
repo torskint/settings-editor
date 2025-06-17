@@ -9,7 +9,7 @@
 
             <x-torskint-settings-editor-alert />
 
-            @foreach(config('torskint-settings-editor.fields') as $key => $field)
+            @foreach($fields as $key => $field)
                 <div class="mb-3">
                     <label for="{{ $key }}" class="form-label fw-bold">
                         <span>{{ $field['label'] }}</span>
