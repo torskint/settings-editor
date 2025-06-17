@@ -19,12 +19,12 @@
                         @endif
                     </label>
                     <input 
-                        type="{{ $field['type'] ?? 'text' }}" 
+                        type="{{ $field['type'] }}" 
                         name="{{ $key }}" 
-                        value="{{ $settings[$key] ?? '' }}" 
+                        value="{{ $settings[$key] }}" 
                         class="form-control"
                         id="{{ $key }}"
-                        placeholder="{{ $field['placeholder'] ?? '' }}"
+                        placeholder="{{ $field['placeholder'] }}"
                         @if(!empty($field['required'])) required @endif
                         autocomplete="off"
                     >

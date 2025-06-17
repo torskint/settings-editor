@@ -14,7 +14,7 @@ class SettingsEditorServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         // Charge le helper pour injecter les paramètres dynamiquement
-        require_once __DIR__ . '/Helpers/LoadSettings.php';
+        \SettingsEditor\Helpers\EditorBootstrap::boot();
 
         // Charge les routes du module
         $this->loadRoutesFrom(__DIR__ . '/routes.php');
@@ -53,8 +53,5 @@ class SettingsEditorServiceProvider extends ServiceProvider
             __DIR__.'/config/torskint-settings-editor.php',
             'torskint-settings-editor'
         );
-
-        // Charge le helper global pour accéder aux paramètres
-        require_once __DIR__ . '/Helpers/Settings.php';
     }
 }

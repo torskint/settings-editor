@@ -4,12 +4,14 @@ namespace SettingsEditor\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
-use SettingsEditor\Helpers\Settings;
 
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+
+use SettingsEditor\Helpers\Fields;
+use SettingsEditor\Helpers\Settings;
 
 class SettingsController extends Controller
 {
@@ -77,15 +79,16 @@ class SettingsController extends Controller
     }
 
 
-
     public function edit()
     {
-        return view('settings-editor::pages.settings', ['settings' => Settings::all()]);
+        return view('settings-editor::pages.settings', [
+            'settings' => Fields::all()
+        ]);
     }
 
-    public function update(Request $request)
+    public function update(\Torskint\SettingsEditor\Http\Requests\SettingsEditorRequest $request)
     {
-        foreach ($request->except('_token') as $key => $value) {
+        foreach ($request->validated() as $key => $value) {
             Settings::set($key, $value);
         }
 
