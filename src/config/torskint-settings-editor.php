@@ -48,6 +48,12 @@ return [
     |
     */
     'fields' => [
+        'default_site_language' => [
+            'label' => 'La langue par défaut du site',
+            'type' => 'text',
+            'placeholder' => 'fr,de,it,...',
+            'required' => true,
+        ],
         'google_tag_manager_id' => [
             'label' => 'Google Tag Manager ID',
             'type' => 'text',
@@ -90,6 +96,7 @@ return [
             'type' => 'tel',
             'placeholder' => '+33 7 98 76 54 32',
             'required' => false,
+            'as' => ['site_phone_alt'],
         ],
         'site_whatsapp' => [
             'label' => 'Numéro WhatsApp',
@@ -104,25 +111,6 @@ return [
             'required' => true,
             'as' => ['webmaster_name'],
         ],
-        // 'author_email' => [
-        //     'label' => 'Email de l’auteur',
-        //     'type' => 'email',
-        //     'placeholder' => 'auteur@exemple.com',
-        //     'required' => true,
-        //     'as' => ['webmaster_email'],
-        // ],
-        // 'webmaster_name' => [
-        //     'label' => 'Nom du Webmaster',
-        //     'type' => 'text',
-        //     'placeholder' => 'Cosimo Boni',
-        //     'required' => true,
-        // ],
-        // 'webmaster_email' => [
-        //     'label' => 'Email du Webmaster',
-        //     'type' => 'email',
-        //     'placeholder' => 'webmaster@exemple.com',
-        //     'required' => true,
-        // ],
         'site_primary_color' => [
             'label' => 'Couleur principale du site',
             'type' => 'text',
@@ -141,14 +129,8 @@ return [
             'type' => 'number',
             'placeholder' => '2017',
             'required' => true,
-            'as' => ['website_created_date', 'website_creation', 'etc'],
+            'as' => ['website_created_date'],
         ],
-        // 'website_created_date' => [
-        //     'label' => 'Date de mise en ligne',
-        //     'type' => 'number',
-        //     'placeholder' => '2020',
-        //     'required' => true,
-        // ],
         'teag' => [
             'label' => 'Taux d\'intérêt',
             'type' => 'text',
